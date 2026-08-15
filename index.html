@@ -3,17 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Mahnoor Clothing</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f1f4;
+            text-align: center;
+        }
+
+        header {
+            background-color: #8b4c68;
+            color: white;
+            padding: 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 40px;
+        }
+
+        .welcome {
+            padding: 30px;
+        }
+
+        .collection {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px #ccc;
+        }
+
+        .card h2 {
+            color: #8b4c68;
+        }
+
+        button {
+            background-color: #8b4c68;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Mahnoor Clothing</h1>
 
-    <p>Welcome to Mahnoor Clothing Store</p>
+    <header>
+        <h1>Mahnoor Clothing</h1>
+        <p>Your Fashion, Your Style</p>
+    </header>
 
-    <h2>Our Collection</h2>
+    <div class="welcome">
+        <h2>Welcome to Mahnoor Clothing Store</h2>
+        <p>Discover beautiful clothing for every style.</p>
+    </div>
 
-    <p>Women's Clothing</p>
-    <p>Men's Clothing</p>
+    <div class="collection">
+
+        <div class="card">
+            <h2>Women's Clothing</h2>
+            <p>Beautiful outfits for women.</p>
+            <button>View Collection</button>
+        </div>
+
+        <div class="card">
+            <h2>Men's Clothing</h2>
+            <p>Stylish clothing for men.</p>
+            <button>View Collection</button>
+        </div>
+
+    </div>
+
 </body>
 </html>
