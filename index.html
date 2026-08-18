@@ -3,262 +3,693 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahnoor Clothing</title>
+
+    <title>StyleHub | Fashion Store</title>
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #f8f8f8;
+            font-family: Arial, sans-serif;
+            background: #fffaf8;
+            color: #222;
         }
 
-        header {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+        /* NAVBAR */
 
-        header h1 {
-            font-size: 3em;
-            letter-spacing: 2px;
-        }
-
-        header p {
-            font-size: 1.2em;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-
-        .welcome {
-            text-align: center;
-            padding: 30px 20px;
+        nav {
+            height: 75px;
             background: white;
-            font-size: 1.1em;
-            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .collection {
-            background: white;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-
-        .collection h2 {
-            font-size: 2em;
-            color: #2c3e50;
-            border-bottom: 3px solid #e67e22;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .collection p {
-            color: #555;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-
-        .view-link {
-            display: inline-block;
-            background: #e67e22;
-            color: white;
-            padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 30px;
+        .logo {
+            font-size: 30px;
             font-weight: bold;
-            transition: 0.3s;
+            color: #222;
         }
 
-        .view-link:hover {
-            background: #d35400;
-            transform: scale(1.05);
+        .logo span {
+            color: #b76e79;
         }
 
-        /* Products Grid */
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #b76e79;
+        }
+
+        .cart {
+            background: #b76e79;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 650px;
+            background:
+                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+                url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-left: 8%;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 600px;
+        }
+
+        .hero-content small {
+            font-size: 15px;
+            letter-spacing: 4px;
+        }
+
+        .hero-content h1 {
+            font-size: 65px;
+            line-height: 1.05;
+            margin: 20px 0;
+        }
+
+        .hero-content h1 span {
+            color: #ffd1d8;
+        }
+
+        .hero-content p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: #b76e79;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .shop-btn:hover {
+            background: #954f5b;
+        }
+
+        /* SECTION */
+
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* CATEGORIES */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .category {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .category img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .category:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-text {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            color: white;
+        }
+
+        .category-text h3 {
+            font-size: 28px;
+        }
+
+        /* PRODUCTS */
+
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
-            margin-top: 20px;
         }
 
         .product {
-            background: #fafafa;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #eee;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: 0.3s;
         }
 
         .product:hover {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
         }
 
         .product img {
             width: 100%;
-            height: 200px;
+            height: 320px;
             object-fit: cover;
-            border-radius: 8px;
-            background: #ddd;
         }
 
-        .product h3 {
-            margin: 12px 0 5px;
-            color: #2c3e50;
+        .product-info {
+            padding: 20px;
         }
 
-        .product .price {
-            color: #e67e22;
-            font-size: 1.2em;
+        .product-info h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: #b76e79;
+            font-size: 19px;
             font-weight: bold;
+            margin-bottom: 15px;
         }
 
-        .product button {
-            background: #2c3e50;
-            color: white;
+        .add-btn {
+            width: 100%;
+            padding: 12px;
             border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            border-radius: 30px;
+            background: #222;
+            color: white;
+            border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
+            font-size: 14px;
         }
 
-        .product button:hover {
-            background: #e67e22;
+        .add-btn:hover {
+            background: #b76e79;
         }
+
+        /* ABOUT */
+
+        .about {
+            background: #f4e9e8;
+            text-align: center;
+            padding: 80px 15%;
+        }
+
+        .about h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* NEWSLETTER */
+
+        .newsletter {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .newsletter h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .newsletter input {
+            width: 300px;
+            padding: 14px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        .newsletter button {
+            padding: 14px 25px;
+            border: none;
+            background: #b76e79;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
 
         footer {
-            text-align: center;
-            padding: 25px;
-            background: #2c3e50;
+            background: #222;
             color: white;
-            margin-top: 40px;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        footer h2 {
+            margin-bottom: 12px;
+        }
+
+        footer span {
+            color: #d88b96;
+        }
+
+        footer p {
+            color: #bbb;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 50px;
+            }
         }
 
         @media (max-width: 600px) {
-            header h1 { font-size: 2em; }
-            .products { grid-template-columns: 1fr; }
+
+            nav {
+                padding: 0 20px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                padding: 30px;
+                min-height: 550px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .newsletter input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>👗 Mahnoor Clothing</h1>
-    <p>Your Fashion, Your Style</p>
-</header>
+    <!-- NAVBAR -->
 
-<div class="welcome">
-    Welcome to Mahnoor Clothing Store — Discover beautiful clothing for every style.
-</div>
+    <nav>
 
-<div class="container">
-
-    <!-- Women's Collection -->
-    <section class="collection">
-        <h2>👩 Women's Clothing</h2>
-        <p>Beautiful outfits for women.</p>
-        <div class="products">
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/ff6b6b/fff?text=Dress" alt="Floral Dress">
-                <h3>Floral Maxi Dress</h3>
-                <span class="price">$45</span>
-                <br><button>Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/4ecdc4/fff?text=Top" alt="Casual Top">
-                <h3>Casual Cotton Top</h3>
-                <span class="price">$25</span>
-                <br><button>Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/ffe66d/333?text=Jeans" alt="Jeans">
-                <h3>Slim Fit Jeans</h3>
-                <span class="price">$35</span>
-                <br><button>Add to Cart</button>
-            </div>
+        <div class="logo">
+            Style<span>Hub</span>
         </div>
-        <br>
-        <a href="#" class="view-link">View Collection →</a>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
+        <button class="cart">
+            🛒 Cart <span id="cartCount">0</span>
+        </button>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <small>NEW COLLECTION 2026</small>
+
+            <h1>
+                Fashion That
+                <span>Defines You</span>
+            </h1>
+
+            <p>
+                Discover modern styles, elegant outfits
+                and timeless fashion for every occasion.
+            </p>
+
+            <a href="#shop" class="shop-btn">
+                SHOP NOW
+            </a>
+
+        </div>
+
     </section>
 
-    <!-- Men's Collection -->
-    <section class="collection">
-        <h2>👔 Men's Clothing</h2>
-        <p>Stylish clothing for men.</p>
-        <div class="products">
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/3498db/fff?text=Shirt" alt="Formal Shirt">
-                <h3>Formal Shirt</h3>
-                <span class="price">$30</span>
-                <br><button>Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/2ecc71/fff?text=Jacket" alt="Jacket">
-                <h3>Leather Jacket</h3>
-                <span class="price">$65</span>
-                <br><button>Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/e67e22/fff?text=Shorts" alt="Shorts">
-                <h3>Cargo Shorts</h3>
-                <span class="price">$22</span>
-                <br><button>Add to Cart</button>
-            </div>
+
+    <!-- CATEGORIES -->
+
+    <section class="section" id="categories">
+
+        <div class="section-title">
+
+            <h2>Shop By Category</h2>
+
+            <p>
+                Find your perfect style
+            </p>
+
         </div>
-        <br>
-        <a href="#" class="view-link">View Collection →</a>
+
+        <div class="categories">
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80">
+
+                <div class="category-text">
+                    <h3>Women</h3>
+                </div>
+
+            </div>
+
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?auto=format&fit=crop&w=800&q=80">
+
+                <div class="category-text">
+                    <h3>Men</h3>
+                </div>
+
+            </div>
+
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80">
+
+                <div class="category-text">
+                    <h3>Accessories</h3>
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <!-- 🆕 Kids' Collection (Newly Added) -->
-    <section class="collection">
-        <h2>🧒 Kids' Clothing</h2>
-        <p>Adorable outfits for your little ones.</p>
-        <div class="products">
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/f1c40f/333?text=Kids+Tshirt" alt="Kids T-Shirt">
-                <h3>Cartoon T-Shirt</h3>
-                <span class="price">$15</span>
-                <br><button>Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/e74c3c/fff?text=Kids+Dress" alt="Kids Dress">
-                <h3>Princess Dress</h3>
-                <span class="price">$22</span>
-                <br><button>Add to Cart</button>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200x200/9b59b6/fff?text=Kids+Shorts" alt="Kids Shorts">
-                <h3>Cotton Shorts Set</h3>
-                <span class="price">$18</span>
-                <br><button>Add to Cart</button>
-            </div>
+
+    <!-- PRODUCTS -->
+
+    <section class="section" id="shop">
+
+        <div class="section-title">
+
+            <h2>Trending Collection</h2>
+
+            <p>
+                Our most popular styles
+            </p>
+
         </div>
-        <br>
-        <a href="#" class="view-link">View Collection →</a>
+
+
+        <div class="products">
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80">
+
+                <div class="product-info">
+
+                    <h3>Elegant Dress</h3>
+
+                    <p>Women's Collection</p>
+
+                    <div class="price">
+                        Rs. 4,500
+                    </div>
+
+                    <button class="add-btn"
+                        onclick="addCart()">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=700&q=80">
+
+                <div class="product-info">
+
+                    <h3>Classic Shirt</h3>
+
+                    <p>Men's Collection</p>
+
+                    <div class="price">
+                        Rs. 3,200
+                    </div>
+
+                    <button class="add-btn"
+                        onclick="addCart()">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80">
+
+                <div class="product-info">
+
+                    <h3>Casual Top</h3>
+
+                    <p>Women's Collection</p>
+
+                    <div class="price">
+                        Rs. 2,500
+                    </div>
+
+                    <button class="add-btn"
+                        onclick="addCart()">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=80">
+
+                <div class="product-info">
+
+                    <h3>Denim Jacket</h3>
+
+                    <p>Men's Collection</p>
+
+                    <div class="price">
+                        Rs. 5,000
+                    </div>
+
+                    <button class="add-btn"
+                        onclick="addCart()">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-</div>
 
-<footer>
-    &copy; 2026 Mahnoor Clothing. All rights reserved.
-</footer>
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <h2>About StyleHub</h2>
+
+        <p>
+            StyleHub is a modern clothing store created
+            for people who love fashion. We offer stylish,
+            comfortable and affordable clothing for every
+            occasion.
+        </p>
+
+    </section>
+
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+        <h2>Get 10% Off Your First Order</h2>
+
+        <p>
+            Subscribe to our newsletter for new collections
+            and special offers.
+        </p>
+
+        <input type="email" placeholder="Enter your email">
+
+        <button onclick="subscribe()">
+            Subscribe
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>
+            Style<span>Hub</span>
+        </h2>
+
+        <p>
+            © 2026 StyleHub. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let cart = 0;
+
+        function addCart() {
+
+            cart++;
+
+            document.getElementById("cartCount")
+                .innerText = cart;
+
+            alert("Product added to cart!");
+
+        }
+
+
+        function subscribe() {
+
+            let email =
+                document.querySelector(
+                    ".newsletter input"
+                ).value;
+
+            if (email === "") {
+
+                alert("Please enter your email.");
+
+            } else {
+
+                alert(
+                    "Thank you for subscribing to StyleHub!"
+                );
+
+            }
+
+        }
+
+    </script>
 
 </body>
 </html>
